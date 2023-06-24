@@ -36,3 +36,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### RequestGeneratorClass ###
+RequestGenerator.java
+RequestGenerator.class
