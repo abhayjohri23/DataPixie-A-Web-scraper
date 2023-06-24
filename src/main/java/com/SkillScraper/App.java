@@ -2,16 +2,9 @@ package com.SkillScraper;
 
 public class App
 {
-
     public static void main( String[] args ) throws Exception {
-//        Window myWindow = Window.getWindow();
-//         if(Window.loadImages())
-//             Window.setUpWindow();
-//         else
-//             System.out.println("Window couldn't be loaded. Images are not loaded!");
+        Window myWindow = Window.getWindow();
+        Window.setUpWindow();
 
-
-        Scraper scraper = new Scraper();
-        scraper.getData("python");
     }
 }

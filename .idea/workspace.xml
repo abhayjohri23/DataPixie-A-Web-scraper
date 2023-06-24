@@ -5,17 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f5a0dbd-655e-40f0-9a38-253e608dd2a1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/HostName.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/RequestGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/Scraper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/ContentPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/LeftPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/ToolbarPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CircleButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/CircleButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/RoundBorder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/RoundBorder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Scraper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/SkillScraper/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/Scraper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/Scraper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -62,7 +58,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/abhay/projects/untitled",
+    "last_opened_file_path": "C:/Users/abhay/projects/Webscrapper",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -76,11 +72,11 @@
 }]]></component>
   <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.App" />
+      <option name="MAIN_CLASS_NAME" value="com.SkillScraper.App" />
       <module name="ScrapingProject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="com.SkillScraper.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
