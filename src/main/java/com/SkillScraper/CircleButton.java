@@ -1,4 +1,4 @@
-package org.example;
+package com.SkillScraper;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;

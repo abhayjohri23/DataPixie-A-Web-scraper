@@ -1,4 +1,4 @@
-package org.example;
+package com.SkillScraper;
 
 import javax.swing.border.AbstractBorder;
 import java.awt.*;

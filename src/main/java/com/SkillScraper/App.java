@@ -1,6 +1,4 @@
-package org.example;
-
-import java.util.Scanner;
+package com.SkillScraper;
 
 public class App
 {
