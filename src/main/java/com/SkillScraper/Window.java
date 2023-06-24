@@ -41,6 +41,8 @@ public final class Window {
         mainContainer.add(LeftPanel.leftPanel,BorderLayout.WEST);
         mainContainer.add(ContentPanel.centralLabel,BorderLayout.CENTER);
 
+        ToolbarPanel.addListenersToButtons();
+
         frame.pack();
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f5a0dbd-655e-40f0-9a38-253e608dd2a1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/ContentPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/LeftPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/ToolbarPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/ResponseContent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/Scraper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/Scraper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/ToolbarPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/ToolbarPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
