@@ -42,7 +42,7 @@ public final class Window {
 
     public static void setUpWindow()
     {
-        Font textFont=new Font("Times New Roman",Font.BOLD|Font.ITALIC,30);
+        // Font textFont=new Font("Times New Roman",Font.BOLD|Font.ITALIC,30);
         //Setting up the containers
 
         Color backColor=new Color(255,255,255);

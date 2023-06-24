@@ -1,7 +1,5 @@
 package org.example;
 
-import sun.java2d.SunGraphics2D;
-
 import javax.swing.border.AbstractBorder;
 import java.awt.*;
 import java.awt.geom.Area;
