@@ -40,3 +40,5 @@ build/
 #### RequestGeneratorClass ####
 RequestGenerator.java
 RequestGenerator.class
+ConnectionProvider.class
+ConnectionProvider.java
