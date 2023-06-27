@@ -1,4 +1,4 @@
-package com.SkillScraper;
+package com.SkillScraper.Backend.Logic;
 
 import java.io.IOException;
 import java.net.http.HttpClient;

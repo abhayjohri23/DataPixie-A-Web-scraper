@@ -1,5 +1,7 @@
-package com.SkillScraper;
+package com.SkillScraper.GUI;
 
+import com.SkillScraper.Backend.Logic.ResponseContent;
+import com.SkillScraper.Backend.Logic.Scraper;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import javax.swing.*;
@@ -7,9 +9,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static com.SkillScraper.HostName.UDEMY;
-import static com.SkillScraper.HostName.YOUTUBE;
-import static com.SkillScraper.ResponseContent.*;
+import static com.SkillScraper.Backend.Logic.HostName.UDEMY;
+import static com.SkillScraper.Backend.Logic.HostName.YOUTUBE;
+import static com.SkillScraper.Backend.Logic.ResponseContent.*;
 import java.util.List;
 
 public class ToolbarPanel {

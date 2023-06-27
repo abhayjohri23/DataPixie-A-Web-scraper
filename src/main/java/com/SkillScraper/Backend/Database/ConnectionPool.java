@@ -1,4 +1,4 @@
-package com.SkillScraper;
+package com.SkillScraper.Backend.Database;
 
 import java.sql.Connection;
 import java.util.ArrayList;

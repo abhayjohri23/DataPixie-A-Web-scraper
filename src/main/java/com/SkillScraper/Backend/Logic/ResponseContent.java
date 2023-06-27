@@ -1,4 +1,4 @@
-package com.SkillScraper;
+package com.SkillScraper.Backend.Logic;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
