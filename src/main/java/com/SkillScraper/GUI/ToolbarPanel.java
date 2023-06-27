@@ -1,13 +1,13 @@
-package com.SkillScraper;
+package com.SkillScraper.GUI;
 
+import com.SkillScraper.Backend.Logic.ResponseContent;
+import com.SkillScraper.Backend.Logic.Scraper;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import static com.SkillScraper.ResponseContent.*;
 
 public class ToolbarPanel {
     public static JPanel topPanel = new JPanel();
@@ -89,18 +89,18 @@ public class ToolbarPanel {
                     ContentPanel.descriptionLabel.setText("No query found2");
                 else{
                     JsonNode nextNode;
-                    if(prev == 1){
-                        nextNode = ResponseContent.contentMap.get(HostName.YOUTUBE).get(cnt2);
-                        prev=2;
-                        ++cnt2;
-                    }
-                    else{
-                        nextNode = ResponseContent.contentMap.get(HostName.UDEMY).get(cnt1);
-                        prev=1;
-                        ++cnt1;
-                    }
+//                    if(prev == 1){
+//                        nextNode = ResponseContent.contentMap.get(HostName.YOUTUBE).get(cnt2);
+//                        prev=2;
+//                        ++cnt2;
+//                    }
+//                    else{
+//                        nextNode = ResponseContent.contentMap.get(HostName.UDEMY).get(cnt1);
+//                        prev=1;
+//                        ++cnt1;
+//                    }
 
-                    ContentPanel.centralLabel.setText(nextNode.get("id").toString());
+//                    ContentPanel.centralLabel.setText(nextNode.get("id").toString());
                 }
             }
         });
@@ -112,24 +112,24 @@ public class ToolbarPanel {
                     ContentPanel.descriptionLabel.setText("No query found1");
                 else{
                     JsonNode nextNode;
-                    if(prev == 1){
-                        nextNode = ResponseContent.contentMap.get(HostName.UDEMY).get(cnt1);
-                        prev=2;
-                        cnt2--;
+//                    if(prev == 1){
+//                        nextNode = ResponseContent.contentMap.get(HostName.UDEMY).get(cnt1);
+//                        prev=2;
+//                        cnt2--;
+//
+//                        if(cnt2<0)
+//                            cnt2=0;
+//                    }
+//                    else{
+//                        nextNode = ResponseContent.contentMap.get(HostName.YOUTUBE).get(cnt1);
+//                        prev=1;
+//                        --cnt1;
+//
+//                        if(cnt1<0)
+//                            cnt1=0;
+//                    }
 
-                        if(cnt2<0)
-                            cnt2=0;
-                    }
-                    else{
-                        nextNode = ResponseContent.contentMap.get(HostName.YOUTUBE).get(cnt1);
-                        prev=1;
-                        --cnt1;
-
-                        if(cnt1<0)
-                            cnt1=0;
-                    }
-
-                    ContentPanel.centralLabel.setText(nextNode.get("id").toString());
+//                    ContentPanel.centralLabel.setText(nextNode.get("id").toString());
                 }
             }
         });

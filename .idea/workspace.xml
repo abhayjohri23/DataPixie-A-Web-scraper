@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f5a0dbd-655e-40f0-9a38-253e608dd2a1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/ResponseContent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/ToolbarPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/ToolbarPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/CircleButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/GUI/CircleButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/ContentPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/GUI/ContentPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/LeftPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/GUI/LeftPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/RoundBorder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/GUI/RoundBorder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/ToolbarPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/GUI/ToolbarPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/GUI/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,32 +52,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "OverrideImplement.generate.javadoc": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/abhay/projects/Webscrapper",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;OverrideImplement.generate.javadoc&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/abhay/projects/Webscrapper&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.SkillScraper.App" />
       <module name="ScrapingProject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.SkillScraper.*" />
+          <option name="PATTERN" value="com.SkillScraper.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
