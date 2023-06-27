@@ -10,7 +10,6 @@ public class ResponseContent {
     static int cnt1 = 0;
     static int cnt2 = 0;
 
-    static int prev = 1;
 
 
 }

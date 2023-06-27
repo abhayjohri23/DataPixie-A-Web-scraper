@@ -9,6 +9,7 @@ public class ContentPanel {
     public static JLabel descriptionLabel;
     public static JLabel infoLabel;
     public static JLabel thumbnail;
+    public static JLabel info;
 
     public static void loadPanel(){
         //Setting the Central Panel
@@ -17,7 +18,8 @@ public class ContentPanel {
         centralLabel.setBorder(BorderFactory.createLoweredSoftBevelBorder());
         centralLabel.setBackground(Color.WHITE);
 
-        descriptionLabel=new JLabel("Description of the Course",SwingConstants.CENTER);
+        descriptionLabel=new JLabel();
+        descriptionLabel.setHorizontalAlignment(SwingConstants.CENTER);
         descriptionLabel.setBorder(new EmptyBorder(0,0,0,0));
         descriptionLabel.setBackground(Color.WHITE);
 
@@ -29,9 +31,12 @@ public class ContentPanel {
 
 
         //Thumbnail - To display the thumbnail for the intro video.
-        thumbnail=new JLabel("Thumbnail",SwingConstants.CENTER);
-        JLabel info=new JLabel("info: Price, Rating and link to purchase",SwingConstants.LEFT);
+        thumbnail = new JLabel();
+        thumbnail.setHorizontalAlignment(SwingConstants.CENTER);
         thumbnail.setBackground(Color.WHITE);
+
+        info = new JLabel();
+        info.setHorizontalAlignment(SwingConstants.LEFT);
         info.setBackground(Color.WHITE);
 
         infoLabel.add(thumbnail,Component.RIGHT_ALIGNMENT);
