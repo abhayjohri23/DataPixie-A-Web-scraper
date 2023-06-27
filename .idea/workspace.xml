@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f5a0dbd-655e-40f0-9a38-253e608dd2a1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/ContentPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/ContentPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/ResponseContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/ResponseContent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/ToolbarPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/ToolbarPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/ConnectionPool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +51,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "new/feat/DBAdd",
     "last_opened_file_path": "C:/Users/abhay/projects/ScrapingProject",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
