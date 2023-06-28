@@ -12,7 +12,7 @@ public class CircleButton extends JButton{
     private boolean mousePressed=false;
     private boolean mouseOver=false;
     private final int dia=50;                 //rep 50 pixels dimensioned button
-    private Image image;
+    private final Image image;
 
 
     public CircleButton(Image img) {

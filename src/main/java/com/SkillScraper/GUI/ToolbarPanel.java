@@ -1,10 +1,13 @@
 package com.SkillScraper.GUI;
 
+import com.SkillScraper.Backend.Database.ConnectionHandler;
+import com.SkillScraper.Backend.Logic.HostName;
 import com.SkillScraper.Backend.Logic.ResponseContent;
 import com.SkillScraper.Backend.Logic.Scraper;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import javax.swing.*;
+import javax.xml.transform.Result;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +15,15 @@ import java.awt.event.ActionListener;
 import static com.SkillScraper.Backend.Logic.HostName.UDEMY;
 import static com.SkillScraper.Backend.Logic.HostName.YOUTUBE;
 import static com.SkillScraper.Backend.Logic.ResponseContent.*;
+
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public class ToolbarPanel {
     public static JPanel topPanel = new JPanel();
@@ -20,6 +31,7 @@ public class ToolbarPanel {
     private static Image searchButtonImage;
     private static Image nextButtonImage;
     private static Image backButtonImage;
+    public static ResultSet resultSet;          //When window is closed, this set will become null
 
     static{
         try{
@@ -34,6 +46,8 @@ public class ToolbarPanel {
     public static CircleButton nextButton;
     public static CircleButton backButton;
     public static JTextField field;
+
+    public static int pointer = 0;
     public static void setGraphics(){
         Color newColor1=new Color(0,110,204);
         ToolbarPanel.topPanel.setBackground(newColor1.brighter());
@@ -67,6 +81,8 @@ public class ToolbarPanel {
         searchButton.setEnabled(true);
         nextButton.setEnabled(true);
         backButton.setEnabled(true);
+
+        ToolbarPanel.addListenersToButtons();
     }
 
     public static void addListenersToButtons(){
@@ -78,76 +94,70 @@ public class ToolbarPanel {
                     ContentPanel.descriptionLabel.setText("No query found0");
                     return ;
                 }
-                if(contentMap.size()>0)
-                    return ;
+
                 Scraper scraper = new Scraper();
                 try {
-                    ResponseContent.contentMap.putAll(scraper.getData(query));
-                    ContentPanel.descriptionLabel.setText(contentMap.get(UDEMY).get(cnt1).get("id").toString());
-                    cnt1++;
+                    Map<HostName,List<JsonNode>> contentMap = scraper.getData(query);
+                    ConnectionHandler.handleRequest(contentMap);
+                    ToolbarPanel.resultSet = ConnectionHandler.getResponse(query);
+
                 } catch (Exception e) {
-                    throw new RuntimeException(e);
+                    e.printStackTrace();
                 }
             }
         });
         ToolbarPanel.nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if(ResponseContent.contentMap.isEmpty())
-                    ContentPanel.descriptionLabel.setText("No query found2");
-                else{
-                    JsonNode nextNode=null;
-                    List<JsonNode> list1 = contentMap.get(UDEMY);
-                    List<JsonNode> list2 = contentMap.get(YOUTUBE);
+                if(resultSet == null)
+                    return ;
+                try{
+                    resultSet.next();
+                }catch(Exception e){
+                    System.out.println("We found the end!");
+                    return ;
+                }
 
-                    if(cnt1!=cnt2){
-                        if(cnt2 + 1 < list2.size())
-                            nextNode = list2.get(++cnt2);
-                        else if(cnt1 + 1 <list1.size())
-                            nextNode = list1.get(++cnt1);
-                    }
-                    else{
-                        if(cnt1 + 1 <list1.size())
-                            nextNode = list1.get(++cnt1);
-                        else if(cnt2 + 1<list1.size())
-                            nextNode = list2.get(++cnt2);
-                    }
+                try {
+                    ContentPanel.descriptionLabel.setText(resultSet.getString("TITLE"));
+                    ContentPanel.centralLabel.setText(resultSet.getString("HEADLINE") +
+                            "\nBy: "+resultSet.getString("INSTRUCTOR_NAME")+" ("+resultSet.getString("SOURCE")+")\n"
+                    +"PRICE: "+resultSet.getString("PRICE"));
 
-                    String output;
-                    if(nextNode == null)    output = "I think, we found the end!";
-                    else                    output = nextNode.get("id").toString();
-                    ContentPanel.descriptionLabel.setText(output);
+                    String url = resultSet.getString("IMAGE_URL");
+//                    HttpRequest image_request = HttpRequest.newBuilder().uri(URI.create(url)).build();
+//
+//                    HttpResponse image = HttpClient.newHttpClient().send(image_request, HttpResponse.BodySubscribers.);
+//                    ContentPanel.thumbnail
+//                            .setIcon(new Image(Toolkit.getDefaultToolkit().getImage()));
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
             }
         });
         ToolbarPanel.backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if(ResponseContent.contentMap.isEmpty())
-                    ContentPanel.descriptionLabel.setText("No query found1");
-                else{
-                    JsonNode prevNode;
-                    List<JsonNode> list1 = contentMap.get(UDEMY);
-                    List<JsonNode> list2 = contentMap.get(YOUTUBE);
+                if(resultSet == null)
+                    return ;
+                try{
+                    resultSet.previous();
+                }catch(Exception e){
+                    e.printStackTrace();
+                    System.out.println("We found the end!");
+                    return ;
+                }
 
-                    if(cnt1==cnt2){
-                        if(cnt1 == 0)       prevNode = null;
-                        else{
-                            --cnt1;
-                            prevNode = list1.get(cnt1);
-                        }
-                    }
-                    else{
-                        --cnt2;
-                        prevNode = list2.get(cnt2);
-                    }
+                try {
+                    ContentPanel.descriptionLabel.setText(resultSet.getString("TITLE"));
+                    ContentPanel.info.setText(resultSet.getString("HEADLINE") +
+                            "\n By:"+resultSet.getString("INSTRUCTOR_NAME ("+resultSet.getString("SOURCE")+")\n"
+                            +"PRICE: "+resultSet.getString("PRICE")));
 
-                    String output;
-                    if(prevNode == null)
-                        output = "I think, that's the end!";
-                    else
-                        output = prevNode.get("id").toString();
-                    ContentPanel.descriptionLabel.setText(output);
+                    ContentPanel.thumbnail
+                            .setIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(resultSet.getString("IMAGE_URL"))));
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
             }
         });

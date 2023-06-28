@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 public class ResponseContent {
-    public static Map<HostName,List<JsonNode>> contentMap = new HashMap<>();
-    static int cnt1 = 0;
-    static int cnt2 = 0;
+    public Map<HostName,List<JsonNode>> contentMap = new HashMap<>();
+    int cnt1 = 0;
+    int cnt2 = 0;
 
 
 
