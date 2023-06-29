@@ -47,7 +47,7 @@ public class Scraper {
         else
             res = rootNode.get("contents").toString();
 
-        System.out.println(res);
+//        System.out.println(res);
 
         return new ObjectMapper().readValue(res, new TypeReference<List<JsonNode>>() {
         });
