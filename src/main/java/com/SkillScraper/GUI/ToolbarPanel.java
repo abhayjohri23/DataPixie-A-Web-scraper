@@ -1,6 +1,6 @@
 package com.SkillScraper.GUI;
-
-import com.SkillScraper.Backend.Logic.ResponseContent;
+import com.SkillScraper.Backend.Database.ConnectionHandler;
+import com.SkillScraper.Backend.Logic.HostName;
 import com.SkillScraper.Backend.Logic.Scraper;
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -8,27 +8,20 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static java.awt.Color.WHITE;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class ToolbarPanel {
     public static JPanel topPanel = new JPanel();
-
-    private static Image searchButtonImage;
-    private static Image nextButtonImage;
-    private static Image backButtonImage;
-
-    static{
-        try{
-            searchButtonImage=Toolkit.getDefaultToolkit().getImage("E:\\icons\\search1.jpg");
-            nextButtonImage=Toolkit.getDefaultToolkit().getImage("E:\\icons\\nextButton.png");
-            backButtonImage= Toolkit.getDefaultToolkit().getImage("E:\\icons\\backButton.png");
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
+    private static final Image searchButtonImage=Toolkit.getDefaultToolkit().getImage("E:\\icons\\search1.jpg");
+    public static ResultSet resultSet;          //When window is closed, this set will become null
+    public static List<String[]> entryList;
     public static CircleButton searchButton;
-    public static CircleButton nextButton;
-    public static CircleButton backButton;
     public static JTextField field;
+    public static int pointer = -1;
     public static void setGraphics(){
         Color newColor1=new Color(0,110,204);
         ToolbarPanel.topPanel.setBackground(newColor1.brighter());
@@ -37,31 +30,32 @@ public class ToolbarPanel {
     }
 
     public static void addTools(){
-//        ToolbarPanel.loadImages();
         ToolbarPanel.setGraphics();
 
         ToolbarPanel.searchButton = new CircleButton(searchButtonImage);
-        ToolbarPanel.nextButton = new CircleButton(nextButtonImage);
-        ToolbarPanel.backButton = new CircleButton(backButtonImage);
         ToolbarPanel.field = new JTextField();
 
         field.setBorder(new RoundBorder());
         field.setFont(new Font("Times New Roman",Font.BOLD,20));
         field.setHorizontalAlignment(SwingConstants.LEFT);
 
-        int fieldWidth = 800-searchButton.getDiameter();      //Giving the size according to frame size, as getWidth() returns zero.
-        int fieldHeight = nextButton.getDiameter();
+        int fieldWidth = 750;      //Giving the size according to frame size, as getWidth() returns zero.
+        int fieldHeight = 50;
 
         field.setPreferredSize(new Dimension(fieldWidth,fieldHeight));
 
-        ToolbarPanel.topPanel.add(backButton);
-        ToolbarPanel.topPanel.add(nextButton);
+        JLabel label = new JLabel("DataPixie");
+        label.setFont(new Font("Times New Roman",Font.BOLD,22));
+        label.setForeground(WHITE);
+
+        label.setBackground(new Color(0,110,204));
+        ToolbarPanel.topPanel.add(label);
+
         ToolbarPanel.topPanel.add(field);
         ToolbarPanel.topPanel.add(searchButton);
 
         searchButton.setEnabled(true);
-        nextButton.setEnabled(true);
-        backButton.setEnabled(true);
+        ToolbarPanel.addListenersToButtons();
     }
 
     public static void addListenersToButtons(){
@@ -70,66 +64,31 @@ public class ToolbarPanel {
             public void actionPerformed(ActionEvent actionEvent) {
                 String query = field.getText().trim();
                 if(query.length()==0){
-                    ContentPanel.descriptionLabel.setText("No query found0");
-                    return ;
+                      ContentPanel.headerLabel.setText("No query found0");
+                        return ;
                 }
 
                 Scraper scraper = new Scraper();
-                try {
-                    ResponseContent.contentMap.putAll(scraper.getData(query));
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
+            try {
+                Map<HostName,List<JsonNode>> contentMap = scraper.getData(query);
+                ConnectionHandler.handleRequest(contentMap);
+                ToolbarPanel.resultSet = ConnectionHandler.getResponse(query);
+                entryList = new ArrayList<>();
+                while(resultSet!=null && resultSet.next()){
+                    String[] entry = new String[6];
+                    entry[0] = resultSet.getString("title");
+                    entry[1] = resultSet.getString("headline");
+                    entry[2] = resultSet.getString("price");
+                    entry[3] = resultSet.getString("url");
+                    entry[4] = resultSet.getString("image_url");
+                    entry[5] = resultSet.getString("source");
+                    entryList.add(entry);
                 }
-            }
-        });
-        ToolbarPanel.nextButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                if(ResponseContent.contentMap.isEmpty())
-                    ContentPanel.descriptionLabel.setText("No query found2");
-                else{
-                    JsonNode nextNode;
-//                    if(prev == 1){
-//                        nextNode = ResponseContent.contentMap.get(HostName.YOUTUBE).get(cnt2);
-//                        prev=2;
-//                        ++cnt2;
-//                    }
-//                    else{
-//                        nextNode = ResponseContent.contentMap.get(HostName.UDEMY).get(cnt1);
-//                        prev=1;
-//                        ++cnt1;
-//                    }
 
-//                    ContentPanel.centralLabel.setText(nextNode.get("id").toString());
-                }
-            }
-        });
-
-        ToolbarPanel.backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                if(ResponseContent.contentMap.isEmpty())
-                    ContentPanel.descriptionLabel.setText("No query found1");
-                else{
-                    JsonNode nextNode;
-//                    if(prev == 1){
-//                        nextNode = ResponseContent.contentMap.get(HostName.UDEMY).get(cnt1);
-//                        prev=2;
-//                        cnt2--;
-//
-//                        if(cnt2<0)
-//                            cnt2=0;
-//                    }
-//                    else{
-//                        nextNode = ResponseContent.contentMap.get(HostName.YOUTUBE).get(cnt1);
-//                        prev=1;
-//                        --cnt1;
-//
-//                        if(cnt1<0)
-//                            cnt1=0;
-//                    }
-
-//                    ContentPanel.centralLabel.setText(nextNode.get("id").toString());
+                    pointer = -1;
+                    System.out.println("Search completed!");
+                }catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         });

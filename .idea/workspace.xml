@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="5f5a0dbd-655e-40f0-9a38-253e608dd2a1" name="Changes" comment="" />
+=======
+    <list default="true" id="5f5a0dbd-655e-40f0-9a38-253e608dd2a1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/GUI/ContentPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/GUI/ContentPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SkillScraper/GUI/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SkillScraper/GUI/Window.java" afterDir="false" />
+    </list>
+>>>>>>> new/feat/DBAdd
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,8 +57,13 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+<<<<<<< HEAD
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/abhay/projects/Webscrapper&quot;,
+=======
+    &quot;git-widget-placeholder&quot;: &quot;new/feat/DBAdd&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/abhay/projects/ScrapingProject&quot;,
+>>>>>>> new/feat/DBAdd
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -62,6 +75,14 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+<<<<<<< HEAD
+=======
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\abhay\projects\ScrapingProject\src\main\java\com\SkillScraper\GUI" />
+    </key>
+  </component>
+>>>>>>> new/feat/DBAdd
   <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.SkillScraper.App" />
@@ -123,6 +144,7 @@
     <option name="version" value="3" />
   </component>
   <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:com.google.protobuf:protobuf-java" />
     <option featureType="dependencySupport" implementationName="java:org.seleniumhq.selenium:selenium-java" />
   </component>
   <component name="XDebuggerManager">

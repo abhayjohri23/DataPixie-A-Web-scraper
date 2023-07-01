@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -18,9 +19,12 @@ public class Scraper {
         HttpRequest request1 = RequestGenerator.getRequest(courseName,HostName.UDEMY);
         HttpRequest request2 = RequestGenerator.getRequest(courseName,HostName.YOUTUBE);
 
+//        System.out.println("Request created!");
+
         List<JsonNode> udemycourseList = getNodesFromRequest(request1,HostName.UDEMY);
         List<JsonNode> yt_courseList = getNodesFromRequest(request2, HostName.YOUTUBE);
 
+//        System.out.println("Nodes received");
         Map<HostName,List<JsonNode>> finalMap = new HashMap<>();
         finalMap.put(HostName.UDEMY,udemycourseList);
         finalMap.put(HostName.YOUTUBE,yt_courseList);
@@ -28,7 +32,7 @@ public class Scraper {
         return finalMap;
     }
 
-    public List<JsonNode> getNodesFromRequest(HttpRequest request, HostName hostSite) throws Exception{
+    public List<JsonNode> getNodesFromRequest(HttpRequest request, HostName hostSite) throws Exception {
 
         HttpClient client = HttpClient.newHttpClient();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -37,36 +41,15 @@ public class Scraper {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode rootNode = mapper.readTree(response.body());
 
-        String res = hostSite.toString().equalsIgnoreCase("udemy")
-                        ? rootNode.get("results").toString()
-                        : rootNode.get("items").toString();
+        String res;
+        if(hostSite == HostName.UDEMY)
+            res = rootNode.get("results").toString();
+        else
+            res = rootNode.get("contents").toString();
 
-        return this.parseNodesList(res);
-    }
+//        System.out.println(res);
 
-    public JsonNode getNode(String s) throws IOException {
-        s = s.substring(1,s.length()-1);
-        return new ObjectMapper().readTree(s);
-    }
-
-    public List<JsonNode> parseNodesList(String s) throws Exception{
-        ObjectMapper mapper = new ObjectMapper();
-        List<JsonNode> list =new ArrayList<>();
-        int st=1;
-        int openbraces = 1;
-
-        for(int i=2;i<s.length();++i){
-            if(openbraces == 0){
-                JsonNode object = mapper.readTree(s.substring(st,i));
-                list.add(object);
-                ++i;
-                st=i;
-            }
-
-            if(i<s.length() && s.charAt(i)=='{')       openbraces++;
-            if(i<s.length() && s.charAt(i)=='}')       openbraces--;
-        }
-
-        return list;
+        return new ObjectMapper().readValue(res, new TypeReference<List<JsonNode>>() {
+        });
     }
 }

@@ -6,14 +6,10 @@ import java.awt.*;
 public final class Window {
     private static Window appWindow;
     private static JFrame frame;
-    private static Image searchImage;
-    private static Image nextButtonImage;
-    private static Image backButtonImage;
-    private static final Color blueColor=new Color(0,155,255);
 
     private Window()
     {
-        frame=new JFrame("SkillScraper");
+        frame=new JFrame("DataPixie: Unleash Knowledge, Uncover Opportunities.");
         frame.setPreferredSize(new Dimension(1000,500));
         frame.setLocation(100,100);
         frame.setLayout(new BorderLayout());
@@ -39,12 +35,13 @@ public final class Window {
 
         mainContainer.add(ToolbarPanel.topPanel,BorderLayout.NORTH);
         mainContainer.add(LeftPanel.leftPanel,BorderLayout.WEST);
-        mainContainer.add(ContentPanel.centralLabel,BorderLayout.CENTER);
-
-        ToolbarPanel.addListenersToButtons();
+        mainContainer.add(ContentPanel.centralPanel,BorderLayout.CENTER);
 
         frame.pack();
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ToolbarPanel.resultSet = null;
+
+        return ;
     }
 }
