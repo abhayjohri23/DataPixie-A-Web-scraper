@@ -35,7 +35,7 @@ public final class Window {
 
         mainContainer.add(ToolbarPanel.topPanel,BorderLayout.NORTH);
         mainContainer.add(LeftPanel.leftPanel,BorderLayout.WEST);
-        mainContainer.add(ContentPanel.centralLabel,BorderLayout.CENTER);
+        mainContainer.add(ContentPanel.centralPanel,BorderLayout.CENTER);
 
         frame.pack();
         frame.setVisible(true);

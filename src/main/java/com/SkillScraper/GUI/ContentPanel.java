@@ -1,55 +1,131 @@
 package com.SkillScraper.GUI;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
+import java.net.URLConnection;
+
+import static com.SkillScraper.GUI.ToolbarPanel.entryList;
+import static java.awt.BorderLayout.*;
+import static java.awt.Color.*;
 
 public class ContentPanel {
-    public static JLabel centralLabel;
-    public static JLabel descriptionLabel;
-    public static JLabel infoLabel;
-    public static JLabel thumbnail;
-    public static JLabel info;
-
+    public static JPanel centralPanel = new JPanel(new BorderLayout());
+    public static JLabel headerLabel = new JLabel();
+    public static JLabel picLabel = new JLabel();
+    public static JLabel descLabel = new JLabel();
+    public static JPanel footerPanel = new JPanel(new BorderLayout());
+    public static JButton next = new JButton("Next");;
+    public static JButton previous = new JButton("Previous");
     public static void loadPanel(){
         //Setting the Central Panel
-        centralLabel=new JLabel();
-        centralLabel.setLayout(new BorderLayout());
-        centralLabel.setBorder(BorderFactory.createLoweredSoftBevelBorder());
-        centralLabel.setBackground(Color.WHITE);
 
-        descriptionLabel=new JLabel();
-        descriptionLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        descriptionLabel.setBorder(new EmptyBorder(0,0,0,0));
-        descriptionLabel.setBackground(Color.WHITE);
+        centralPanel.setBackground(WHITE);
+        centralPanel.setBorder(BorderFactory.createEtchedBorder());
 
-        //Information Label - Thumbnail + Sub Info Label
-        infoLabel=new JLabel();
-        infoLabel.setLayout(new BorderLayout());
-        infoLabel.setBorder(new EmptyBorder(0,0,0,0));
-        infoLabel.setBackground(Color.WHITE);
+        previous.setBackground(WHITE);
+        previous.setFont(new Font("Times New Roman",Font.BOLD,22));
+        previous.setBorder(new EmptyBorder(0,0,0,0));
 
+        next.setBackground(WHITE);
+        next.setFont(new Font("Times New Roman",Font.BOLD,22));
+        next.setBorder(new EmptyBorder(0,0,0,0));
 
-        //Thumbnail - To display the thumbnail for the intro video.
-        thumbnail = new JLabel();
-        thumbnail.setHorizontalAlignment(SwingConstants.LEFT);
-        thumbnail.setBackground(Color.WHITE);
+        footerPanel.add(previous,LINE_START);
+        footerPanel.add(next,LINE_END);
+        footerPanel.setPreferredSize(new Dimension(650,35));
+        footerPanel.setBackground(WHITE);
 
-        info = new JLabel();
-        info.setHorizontalAlignment(SwingConstants.RIGHT);
-        info.setBackground(Color.WHITE);
+        JPanel middlePane = new JPanel(new BorderLayout());
 
-        infoLabel.add(thumbnail,BorderLayout.NORTH);
-        thumbnail.setPreferredSize(new Dimension(infoLabel.getWidth(),infoLabel.getHeight()));
+        picLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        descLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        middlePane.setBackground(WHITE);
 
-        infoLabel.add(info,BorderLayout.SOUTH);
-        info.setPreferredSize(new Dimension(infoLabel.getWidth()*2, infoLabel.getHeight()));
+        picLabel.setPreferredSize(new Dimension(160,150));
+//        picLabel.setBorder(BorderFactory.createEtchedBorder());
 
-        centralLabel.add(descriptionLabel,BorderLayout.NORTH);
-        centralLabel.add(infoLabel, BorderLayout.CENTER);
+        descLabel.setPreferredSize(new Dimension(150,150));
+//        descLabel.setBorder(BorderFactory.createEtchedBorder());
+
+        middlePane.setPreferredSize(new Dimension(400,300));
+        middlePane.add(picLabel,NORTH);
+        middlePane.add(descLabel,SOUTH);
+
+        headerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+//        headerLabel.setBorder(BorderFactory.createEtchedBorder());
+        headerLabel.setPreferredSize(new Dimension(650,65));
+
+        next.setEnabled(true);
+        previous.setEnabled(true);
+
+        centralPanel.add(headerLabel,NORTH);
+        centralPanel.add(footerPanel,SOUTH);
+        centralPanel.add(middlePane,CENTER);
+
+        ContentPanel.addListeners();
 
         return ;
+    }
+
+    public static void addListeners(){
+        next.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if(ToolbarPanel.pointer==entryList.size()-1){
+                    return ;
+                }
+                ++ToolbarPanel.pointer;
+                String[] data = entryList.get(ToolbarPanel.pointer);
+
+                headerLabel.setText(data[0].substring(1,data[0].length()-1));
+                headerLabel.setFont(new Font("Times New Roman",Font.BOLD,20));
+
+                descLabel.setText("<html>"+data[1].substring(1,data[1].length()-1)+"<br>"+"Price: "+data[2]+"<br>"+"LINK: <a href="+data[3]+">"+data[5]+"</a><html>");
+                descLabel.setFont(new Font("Times New Roman",Font.ITALIC,20));
+
+                String url = data[4].replaceAll("\"","");
+                try {
+                    Icon pic = new ImageIcon(ImageIO.read(new URL(url)));
+                    picLabel.setIcon(pic);
+                } catch (IOException e) {
+                    picLabel.setText("Image Not found");
+                }
+            }
+        });
+
+        previous.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if(ToolbarPanel.pointer==0){
+                    return ;
+                }
+                --ToolbarPanel.pointer;
+                String[] data = entryList.get(ToolbarPanel.pointer);
+                headerLabel.setText(data[0].substring(1,data[0].length()-1));
+                headerLabel.setFont(new Font("Times New Roman",Font.BOLD,20));
+
+                descLabel.setText("<html>"+data[1].substring(1,data[1].length()-1)+"<br>"+"Price: "+data[2]+"<br>"+"LINK: <a href="+data[3]+">"+data[5]+"</a><html>");
+                descLabel.setFont(new Font("Times New Roman",Font.ITALIC,20));
+
+                String url = data[4].replaceAll("\"","");
+                try {
+                    Icon pic = new ImageIcon(ImageIO.read(new URL(url)));
+                    picLabel.setIcon(pic);
+                } catch (IOException e) {
+                    picLabel.setText("Image Not found");
+                }
+            }
+        });
     }
 
 }
