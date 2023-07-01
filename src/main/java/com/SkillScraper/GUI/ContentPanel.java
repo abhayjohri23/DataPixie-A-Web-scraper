@@ -88,10 +88,10 @@ public class ContentPanel {
                 String[] data = entryList.get(ToolbarPanel.pointer);
 
                 headerLabel.setText(data[0].substring(1,data[0].length()-1));
-                headerLabel.setFont(new Font("Times New Roman",Font.BOLD,20));
+                headerLabel.setFont(new Font("Times New Roman",Font.BOLD,22));
 
                 descLabel.setText("<html>"+data[1].substring(1,data[1].length()-1)+"<br>"+"Price: "+data[2]+"<br>"+"LINK: <a href="+data[3]+">"+data[5]+"</a><html>");
-                descLabel.setFont(new Font("Times New Roman",Font.ITALIC,20));
+                descLabel.setFont(new Font("Times New Roman",Font.ITALIC,16));
 
                 String url = data[4].replaceAll("\"","");
                 try {
@@ -112,10 +112,10 @@ public class ContentPanel {
                 --ToolbarPanel.pointer;
                 String[] data = entryList.get(ToolbarPanel.pointer);
                 headerLabel.setText(data[0].substring(1,data[0].length()-1));
-                headerLabel.setFont(new Font("Times New Roman",Font.BOLD,20));
+                headerLabel.setFont(new Font("Times New Roman",Font.BOLD,22));
 
                 descLabel.setText("<html>"+data[1].substring(1,data[1].length()-1)+"<br>"+"Price: "+data[2]+"<br>"+"LINK: <a href="+data[3]+">"+data[5]+"</a><html>");
-                descLabel.setFont(new Font("Times New Roman",Font.ITALIC,20));
+                descLabel.setFont(new Font("Times New Roman",Font.ITALIC,16));
 
                 String url = data[4].replaceAll("\"","");
                 try {

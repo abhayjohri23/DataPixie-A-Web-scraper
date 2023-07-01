@@ -9,7 +9,7 @@ public final class Window {
 
     private Window()
     {
-        frame=new JFrame("SkillScraper");
+        frame=new JFrame("DataPixie: Unleash Knowledge, Uncover Opportunities.");
         frame.setPreferredSize(new Dimension(1000,500));
         frame.setLocation(100,100);
         frame.setLayout(new BorderLayout());

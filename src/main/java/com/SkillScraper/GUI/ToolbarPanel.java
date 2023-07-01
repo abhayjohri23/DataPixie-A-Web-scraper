@@ -2,27 +2,18 @@ package com.SkillScraper.GUI;
 
 import com.SkillScraper.Backend.Database.ConnectionHandler;
 import com.SkillScraper.Backend.Logic.HostName;
-import com.SkillScraper.Backend.Logic.ResponseContent;
+
 import com.SkillScraper.Backend.Logic.Scraper;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import javax.swing.*;
-import javax.xml.transform.Result;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static com.SkillScraper.Backend.Logic.HostName.UDEMY;
-import static com.SkillScraper.Backend.Logic.HostName.YOUTUBE;
-import static com.SkillScraper.Backend.Logic.ResponseContent.*;
 import static java.awt.Color.WHITE;
 
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
