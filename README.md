@@ -1,5 +1,5 @@
 # DataPixie: Unleash Knowledge, Uncover Opportunities.
-This repository stores my first ever project using Java. It is a desktop based GUI, backed with Web scrapping algorithm, that scrapes the courses from youtube and udemy (as of now) and sorts them, based on user preference and stores in SQL as well as show case them on a GUI.
+It brings a desktop based GUI, backed with Web scrapping algorithm, that scrapes the courses from youtube and udemy (as of now) and sorts them, based on user preference and stores in SQL DB and later showcases them on a GUI.
 
 # How to use it:
 1. Pre-requisite is that the java files are already present in local repo, and config (pom.xml dependencies etc) are set up.
